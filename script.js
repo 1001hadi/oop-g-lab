@@ -12,3 +12,13 @@ const adventurer = {
 for (let items of adventurer.inventory) {
   console.log(items);
 }
+
+// 2
+let subObj = {
+  name: "Frank",
+  type: "Flea",
+  belongings: ["hat", "sunglasses"],
+};
+adventurer.companion.leo = subObj;
+
+console.log(adventurer.companion.leo.belongings);
