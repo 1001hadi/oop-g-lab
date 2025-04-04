@@ -90,3 +90,34 @@ const robinAdventure = new Adventurer("Robin", "Fighter");
 robinAdventure.companion = new Companion("Leo", "Cat");
 robinAdventure.companion.companion = new Companion("Frank", "Flea");
 robinAdventure.companion.companion.inventory = ["small hat", "sunglasses"];
+
+///////////////
+// part four//
+/////////////
+
+Character.MAX_HEALTH = 100;
+Adventurer.ROLES = ["Fighter", "Healer", "Wizard", "Rogue"];
+
+class AdventurerFactory {
+  constructor(role) {
+    this.role = role;
+    this.adventurers = [];
+  }
+  generate(name) {
+    const newAdventurer = new Adventurer(name, this.role);
+    this.adventurers.push(newAdventurer);
+    return newAdventurer;
+  }
+  findByIndex(index) {
+    return this.adventurers[index];
+  }
+  findByName(name) {
+    return this.adventurers.find((a) => a.name === name);
+  }
+}
+
+const healers = new AdventurerFactory("Healer");
+const robinHealer = healers.generate("Robin");
+
+const fighters = new AdventurerFactory("Fighter");
+const johnFighter = fighters.generate("John");
